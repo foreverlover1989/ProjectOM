@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{{title}}</title>
+	
+</head>
+<body>  
+	<table width="1000" height="500" border="1" cellpadding="0" cellspacing="0">
+		<tr >
+			<td rowspan="2" width="240" height="132" style='background: url("/static/om.jpg");'></td>
+			<td colspan="3" height="50"  align="center">
+				{%if not result%}
+				<form action="/" method="POST">
+					{%csrf_token%}
+					<span>用户名 <input type="text" name="user" id="user"></span>
+					<span>密码 <input type="text" name="passwd"></span>
+					<span>IP <input type="text" name="IP"></span>
+					<span><input type="submit" value="登录"></span>
+				</form>
+				{%else%}
+					<span> IP：{{ip}} </span>
+					<span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;账号：{{user}} </span>
+					<span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;状态：{{result1}} </span>
+					<span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;身份：{{result}}</span>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<a href="/" style="text-decoration:none;"><input type="submit" value="退出"></a>
+				{%endif%}
+			</td>
+		</tr>
+		<tr>
+			<td colspan="3" height="70" style='background: url("/static/opration.jpg");'> 
+			</td>	
+		</tr>
+		<tr>
+			<td rowspan="7"></td>
+			{%if ip%}
+			<td colspan="3" height="30" rowspan="7" valign="top">
+				<div>
+				{%for k,v in result2.items%}
+					<span>{{k}}</span> :
+					<span>{{v}}</span> &nbsp;&nbsp;&nbsp;
+				{%endfor%}
+				</div>
+				<div>
+					内存信息： 
+						<span>总计：{{mema}}M</span>
+						<span>已用：{{memb}}M</span>
+				</div>
+				<div>
+					IP : {{ip}}
+				</div>
+				<div>主机名 ：{{hostname}}</div>
+				<div>系统内核版本 ：{{uname}}</div>
+				<div>系统版本 ：{{linux}}</div>
+				<div>硬盘信息 ：&nbsp;&nbsp;容量：{{diska}}&nbsp;已用：{{diskb}}</div>	
+			</td>
+			{%else%}
+			<td colspan="3" height="30" rowspan="7" valign="top"></td>
+			{%endif%}
+		</tr>
+		<tr>
+		</tr>
+		<tr>
+			
+		</tr>
+		<tr>
+			
+		</tr>
+		<tr>
+			
+		</tr>
+		<tr>
+			
+		</tr>
+		<tr>
+			
+		</tr>
+	</table>
+</body>
+</html>
